@@ -12,7 +12,6 @@ RUN  cd /chia-blockchain && . ./activate && sh install-gui.sh
 RUN adduser --gecos "" --shell /bin/bash chia
 RUN usermod --password chia chia
 RUN chown -R chia:chia ./chia-blockchain/
-RUN chown root:root /chia-blockchain/electron-react/node_modules/electron/dist/chrome-sandbox
 WORKDIR /chia-blockchain/electron-react
 ENTRYPOINT ["tail", "-f", "/dev/null"]
 
