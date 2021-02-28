@@ -1,0 +1,12 @@
+FROM chia-blockchain-base:1rc4
+USER root
+RUN apt-get install -y libasound2 libnss3-tools libgdk-pixbuf2.0-0 libgtk-3-0
+RUN  cd /chia-blockchain && . ./activate && sh install-gui.sh
+WORKDIR /
+COPY /gui-entry-point.sh /gui-entry-point.sh
+RUN chown -R chia:chia ./chia-blockchain
+USER chia
+WORKDIR /chia-blockchain/electron-react
+ENTRYPOINT ["bash", "/gui-entry-point.sh"]
+
+
