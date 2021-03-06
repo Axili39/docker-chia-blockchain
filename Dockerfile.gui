@@ -5,6 +5,7 @@ RUN  cd /chia-blockchain && . ./activate && sh install-gui.sh
 WORKDIR /
 COPY /gui-entry-point.sh /gui-entry-point.sh
 RUN chown -R chia:chia ./chia-blockchain
+RUN apt-get install -y libgdm-dev
 USER chia
 WORKDIR /chia-blockchain/electron-react
 ENTRYPOINT ["bash", "/gui-entry-point.sh"]
