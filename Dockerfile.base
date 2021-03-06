@@ -6,6 +6,7 @@ RUN apt-get update \
 	&& apt-get clean \
 	&& apt-get autoclean \
 	&& apt-get update \
+	&& apt-get install -y --reinstall ca-certificates \ 
 	&& apt-get install -y apt-utils \
 	&& DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends tzdata lsb-release bc sudo git \
 	&& cd / && git clone git://github.com/Chia-Network/chia-blockchain.git \
