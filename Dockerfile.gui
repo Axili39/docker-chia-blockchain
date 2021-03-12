@@ -1,13 +1,15 @@
-FROM chia-blockchain-base:1rc4
+FROM axili39/chia-blockchain:1rc5
 USER root
-RUN apt-get install -y libasound2 libnss3-tools libgdk-pixbuf2.0-0 libgtk-3-0
+RUN apt-get install -y libasound2 libnss3-tools libgdk-pixbuf2.0-0 libgtk-3-0 libgdm1
 RUN  cd /chia-blockchain && . ./activate && sh install-gui.sh
 WORKDIR /
 COPY /gui-entry-point.sh /gui-entry-point.sh
 RUN chown -R chia:chia ./chia-blockchain
-RUN apt-get install -y libgdm-dev
+RUN chown root:root /chia-blockchain/chia-blockchain-gui/node_modules/electron/dist/chrome-sandbox
+RUN chmod 4755  /chia-blockchain/chia-blockchain-gui/node_modules/electron/dist/chrome-sandbox
 USER chia
-WORKDIR /chia-blockchain/electron-react
-ENTRYPOINT ["bash", "/gui-entry-point.sh"]
+WORKDIR /chia-blockchain/chia-blockchain-gui
+#ENTRYPOINT ["bash", "/gui-entry-point.sh"]
+ENTRYPOINT ["/bin/bash"]
 
 
