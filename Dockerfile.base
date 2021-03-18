@@ -10,7 +10,7 @@ RUN apt-get update \
 	&& apt-get install -y apt-utils \
 	&& DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends tzdata lsb-release bc sudo git \
 	&& cd / && git clone git://github.com/Chia-Network/chia-blockchain.git \
-	&& cd /chia-blockchain && git checkout 1.0rc6 \
+	&& cd /chia-blockchain && git checkout 1.0 \
 	&& cd /chia-blockchain && sh install.sh \
 	&& adduser --gecos "" --shell /bin/bash chia \
 	&& chown -R chia:chia /chia-blockchain/ \
