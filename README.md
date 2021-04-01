@@ -4,8 +4,8 @@ Dockerfile for chia-blockchain app
 Usage for plotting:
 ===============
 ```
-docker pull axili39/chia-blockchain:1.0.0
-docker run -d -v /path/to/chia/home:/home/chia/.chia -v /path/to/temporary/drive:/home/chia/tmp -v /path/to/final/drive:/home/chia/plots --name chia1 axili39/chia-blockchain:1.0.0
+docker pull axili39/chia-blockchain:1.0.3
+docker run -d -v /path/to/chia/home:/home/chia/.chia -v /path/to/temporary/drive:/home/chia/tmp -v /path/to/final/drive:/home/chia/plots --name chia1 axili39/chia-blockchain:1.0.3
 ```
 
 now container is running and chia has been initialized.
