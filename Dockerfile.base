@@ -10,10 +10,8 @@ RUN apt-get update \
 	&& apt-get install -y apt-utils \
 	&& DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends tzdata lsb-release bc sudo git \
 	&& cd / && git clone git://github.com/Chia-Network/chia-blockchain.git \
-	&& cd /chia-blockchain && git checkout 1.0.3 \
+	&& cd /chia-blockchain && git checkout 1.1.4 \
 	&& cd /chia-blockchain && sh install.sh \
-	&& adduser --gecos "" --shell /bin/bash chia \
-	&& chown -R chia:chia /chia-blockchain/ \
 	&& apt-get clean \
 	&& apt-get autoclean \
 	&& apt-get autoremove
@@ -21,7 +19,6 @@ RUN apt-get update \
 COPY /chiactl /chia-blockchain/chiactl
 COPY /plotter-entry-point.sh /plotter-entry-point.sh
 
-USER chia
 WORKDIR /chia-blockchain
 ENV PATH=$PATH:/chia-blockchain
 
